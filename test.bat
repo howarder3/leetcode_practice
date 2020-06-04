@@ -10,7 +10,7 @@ set day=%%k
 )
 
 for /f "tokens=1-4 delims=:." %%i IN ("%time%") DO (
-set hour=%%0i
+set hour=%0%i
 set minute=%%j
 set second=%%k
 rem set centisecond=%%l
