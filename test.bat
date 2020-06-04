@@ -9,8 +9,8 @@ set month=%%j
 set day=%%k
 )
 
-for /f "tokens=1-4 delims=:." %%i IN ("%time%") DO (
-set hour=%0%i
+for /f "tokens=1-4 delims=:." %%i IN ("%time: =%") DO (
+set hour=%%i
 set minute=%%j
 set second=%%k
 rem set centisecond=%%l
