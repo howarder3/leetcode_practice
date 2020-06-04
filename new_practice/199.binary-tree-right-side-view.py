@@ -1,7 +1,7 @@
 #
-# @lc app=leetcode id=104 lang=python3
+# @lc app=leetcode id=199 lang=python3
 #
-# [104] Maximum Depth of Binary Tree
+# [199] Binary Tree Right Side View
 #
 
 # @lc code=start
@@ -12,16 +12,18 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    # def maxDepth(self, root: TreeNode) -> int:
-    def maxDepth(self, root):
-        if root is None:
-            return 0
+    # def rightSideView(self, root: TreeNode) -> List[int]:
+    def rightSideView(self, root):
 
-        level_cnt = 0
+        if not root:
+            return []
+
+        
         level = [root]
+        ans = []
 
         while level:
-            level_cnt += 1
+            ans.append(level[-1].val)
 
             next_level = []
             for ele in level:
@@ -29,17 +31,18 @@ class Solution:
                     next_level.append(ele.left)
                 if ele.right is not None:
                     next_level.append(ele.right)
-                
+
             level = next_level
 
-        return level_cnt
+        return ans
+
+
+
+
+
+
 
 
         
-
-    
-
-        
-
 # @lc code=end
 
