@@ -1,4 +1,4 @@
-@ECHO OFF
+@ECHO ON
 rem ECHO Congratulations! Your first batch file executed successfully.
 
 for /f "tokens=1-4 delims=-/ " %%i IN ("%date%") DO (
@@ -15,9 +15,9 @@ rem set centisecond=%%l
 )
 
 SET OutputDir=%year%/%month%/%day%-%hour%:%minute%:%second%
-ECHO      
+ECHO =======================================     
 ECHO Current Time: %OutputDir%, update to github
-ECHO      
+ECHO =======================================      
 
 rem set /p msg="Enter msg: "
 git add .
