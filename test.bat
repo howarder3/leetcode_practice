@@ -1,4 +1,4 @@
-@ECHO ON
+@ECHO OFF
 rem ECHO Congratulations! Your first batch file executed successfully.
 
 for /f "tokens=1-4 delims=-/ " %%i IN ("%date%") DO (
