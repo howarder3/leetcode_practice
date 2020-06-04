@@ -15,9 +15,9 @@ rem set centisecond=%%l
 )
 
 SET OutputDir=%year%/%month%/%day%-%hour%:%minute%:%second%
-ECHO =======================================     
+ECHO ================================================     
 ECHO Current Time: %OutputDir%, update to github
-ECHO =======================================      
+ECHO ================================================      
 
 rem set /p msg="Enter msg: "
 git add .
