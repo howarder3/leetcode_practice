@@ -1,16 +1,16 @@
 #!/bin/sh
 
-echo "Change directory..."
+echo "============ Change directory ============"
 cd /Users/howarder3/Documents/GitHub/leetcode_practice 
 
-echo "Copying files..."
+echo "============ Copying files ============"
 cp -R /Users/howarder3/.leetcode/ /Users/howarder3/Documents/GitHub/leetcode_practice/new_practice 
 
 # echo "============ Current datetime ============"
 datetime=$(date '+%Y/%m/%d-%H:%M:%S');
 echo "Current datetime: $datetime"
 
-echo "Update to GitHub..."
+echo "============ Update to GitHub ============"
 git add .
 git commit -m $datetime
 git push origin master
