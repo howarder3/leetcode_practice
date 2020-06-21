@@ -1,6 +1,6 @@
 @ECHO OFF
 
-copy C:\Users\user\.leetcode_c++ D:\jupyter_notebook\leetcode_practice\new_practice_c++ 
+copy C:\Users\user\.leetcode_cpp D:\jupyter_notebook\leetcode_practice\new_practice_cpp /Y
 
 for /f "tokens=1-4 delims=-/ " %%i IN ("%date%") DO (
 set year=%%i
