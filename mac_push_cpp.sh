@@ -11,6 +11,7 @@ datetime=$(date '+%Y/%m/%d-%H:%M:%S');
 echo "Current datetime: $datetime"
 
 echo "============ Update to GitHub	============"
+git pull
 git add .
 git commit -m $datetime
 git push origin master
