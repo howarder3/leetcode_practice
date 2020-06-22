@@ -16,12 +16,14 @@ public:
         for (int i=0; i<nums.size();i++){
             
             iter = dict.find(target-nums[i]);
-            if (iter != dict.end()){
+            // cout<<iter;
+            // printf("(%d,%d)",iter->first,iter->second);
+            if (iter != dict.end()){ // num found
                 ans.push_back(iter->second); //nums find in dict (smaller)
                 ans.push_back(i); // current index (bigger)                
                 return ans;     
             }
-            else{
+            else{ //iter == dict.end(), not found
                 dict[nums[i]]=i;    
             }
         }

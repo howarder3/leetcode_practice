@@ -21,6 +21,9 @@ ECHO Current Time: %OutputDir%, update to github
 ECHO ===================================================     
 
 rem set /p msg="Enter msg: "
+D:
+cd D:\jupyter_notebook\leetcode_practice
+
 git add .
 rem git commit -m msg
 git commit -m %OutputDir%
