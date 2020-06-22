@@ -4,7 +4,7 @@ echo "============ Change directory	============"
 cd /Users/howarder3/Documents/GitHub/leetcode_practice 
 
 echo "============ Copying files	============"
-cp -R /Users/howarder3/.leetcode_c++/ /Users/howarder3/Documents/GitHub/leetcode_practice/new_practice_c++ 
+cp -R /Users/howarder3/.leetcode_cpp/ /Users/howarder3/Documents/GitHub/leetcode_practice/new_practice_cpp 
 
 # echo "============ Current datetime ============"
 datetime=$(date '+%Y/%m/%d-%H:%M:%S');
