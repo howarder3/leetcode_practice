@@ -1,11 +1,13 @@
-// http://alrightchiu.github.io/SecondRound/binary-tree-jian-li-yi-ke-binary-tree.html
-// http://alrightchiu.github.io/SecondRound/binary-tree-traversalxun-fang.html
+// https://github.com/alrightchiu/SecondRound/blob/master/content/Algorithms%20and%20Data%20Structures/Tree%20series/ExampleCode/BT_Construct_from_char_array.cpp
+//
+// BT_Construct_from_char_array.cpp
+// C++ code, harshly and successfully compiled by g++
+//
 
 #include <iostream>
 #include <sstream>
 #include <queue>
 
-using namespace std;
 
 class BinaryTree;
 class TreeNode{
@@ -28,62 +30,30 @@ public:
     BinaryTree():root(0){};
     BinaryTree(const char* str);
 
-    void LevelorderConstruct(stringstream &ss);
-    void InsertLevelOrder(char data);
+    void LevelorderConstruct(std::stringstream &ss);
+    void InsertLevelorder(char data);
 
     TreeNode* leftmost(TreeNode *current);
     TreeNode* InorderSuccessor(TreeNode *current);
-    void Inorder_by_parent(); 
+    void Inorder_by_parent();
 };
 
-void BinaryTree::Inorder_by_parent(){
-    TreeNode *current = new TreeNode;
-    current = leftmost(root);
-
-    while(current){
-        std::cout << current->data << " ";
-        current = InorderSuccessor(current);
-    }
-}
-
-TreeNode* BinaryTree::leftmost(TreeNode *current){
-    while (current->leftchild != NULL){
-        current = current->leftchild;
-    }
-    return current;
-}
-
-TreeNode* BinaryTree::InorderSuccessor(TreeNode *current){
-    if (current->rightchild != NULL){
-        return leftmost(current->rightchild);
-    }
-
-    // 利用兩個pointer: successor與current做traversal 
-
-    TreeNode *successor = current->parent;   
-    while (successor != NULL && current == successor->rightchild) {
-        current = successor;
-        successor = successor->parent;
-    }
-    return successor;
-}
-
 BinaryTree::BinaryTree(const char* str){
-    stringstream  ss;
+    std::stringstream  ss;
     ss << str;                     // magic!
-
+    
     root = new TreeNode;           // allocate memory for root
     ss >> root->data;              // assign character to root
-
+    
     LevelorderConstruct(ss);
 }
 
 void BinaryTree::LevelorderConstruct(std::stringstream &ss){
-
+    
     std::queue<TreeNode*> q;         // create a queue to handle level-roder rule
     TreeNode *current = root;        // point *current to root
     char data = 'x';                 // initializa data as 'x'
-
+    
     while (ss >> data) {
         if (data >= 65 && data <= 90){                // 處理current的leftchild
             TreeNode *new_node = new TreeNode(data);  // call constructor TreeNode(char s)
@@ -106,11 +76,11 @@ void BinaryTree::LevelorderConstruct(std::stringstream &ss){
     }
 }
 
-void BinaryTree::InsertLevelOrder(char data){    
+void BinaryTree::InsertLevelorder(char data){    
 
-    queue<TreeNode*> q;
+    std::queue<TreeNode*> q;
     TreeNode *current = root;
-
+    
     while (current) {
         if (current->leftchild != NULL){               // current的leftchild沒有空位
             q.push(current->leftchild);                // 將其推進queue中
@@ -134,22 +104,46 @@ void BinaryTree::InsertLevelOrder(char data){
         q.pop();
     }
 }
+TreeNode* BinaryTree::leftmost(TreeNode *current){
+    while (current->leftchild != NULL){
+        current = current->leftchild;
+    }
+    return current;
+}
+TreeNode* BinaryTree::InorderSuccessor(TreeNode *current){
+    if (current->rightchild != NULL){
+        return leftmost(current->rightchild);
+    }
+    
+    // 利用兩個pointer: successor與current做traversal 
+    TreeNode *successor = current->parent;   
+    while (successor != NULL && current == successor->rightchild) {
+        current = successor;
+        successor = successor->parent;
+    }
+    return successor;
+}
+void BinaryTree::Inorder_by_parent(){
+    TreeNode *current = new TreeNode;
+    current = leftmost(root);
 
-int main(){
+    while(current){
+        std::cout << current->data << " ";
+        current = InorderSuccessor(current);
+    }
+}
+int main() {
     const char *a = "A B C D E F x x x G H x I";
     BinaryTree T(a);
-    T.Inorder_by_parent(); // 以 level-order 規則建立 Binary Tree
-    cout << endl;
-
-    T.InsertLevelOrder('K');
-    T.InsertLevelOrder('L');
-    T.InsertLevelOrder('M');
-    T.InsertLevelOrder('N');
     T.Inorder_by_parent();
-    cout<<endl;
+    std::cout << std::endl;
+
+    T.InsertLevelorder('K');
+    T.InsertLevelorder('L');
+    T.InsertLevelorder('M');
+    T.InsertLevelorder('N');
+    T.Inorder_by_parent();
+    std::cout << std::endl;
 
     return 0;
 }
-
-// g++ tree_advance.cpp -o tree && tree
-
